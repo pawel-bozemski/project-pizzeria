@@ -83,8 +83,7 @@
     initAccordion() {
       const thisProduct = this;
       /* find the clickable trigger (the element that should react to clicking) */
-      const accordionTriggers = document.querySelectorAll(select.menuProduct.clickable);
-      for (let accordionTrigger of accordionTriggers) {
+      const accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
       /* START: click event listener to trigger */
       accordionTrigger.addEventListener('click', function() {
         console.log('clicked');
@@ -93,6 +92,7 @@
         thisProduct.element.classList.toggle('active');
         /* find all active products */
         const allActiveProducts = document.querySelectorAll('.product.active');
+        console.log ('allActiveProducts',allActiveProducts);
         /* START LOOP: for each active product */
         for (let activeProduct of allActiveProducts) {
           /* START: if the active product isn't the element of thisProduct */
@@ -105,7 +105,7 @@
         }
       /* END: click event listener to trigger */
       });
-    }
+
     }
   }
   const app = {
