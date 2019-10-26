@@ -83,13 +83,12 @@
     initAccordion() {
       const thisProduct = this;
       /* find the clickable trigger (the element that should react to clicking) */
-      const accordionTrigger = document.querySelectorAll(select.menuProduct.clickable);
-      console.log ('accordionTrigger',accordionTrigger);
+      const accordionTriggers = document.querySelectorAll(select.menuProduct.clickable);
+      for (let accordionTrigger of accordionTriggers) {
       /* START: click event listener to trigger */
       accordionTrigger.addEventListener('click', function() {
         console.log('clicked');
         /* prevent default action for event */
-        event.preveventDefault();
         /* toggle active class on element of thisProduct */
         thisProduct.element.classList.toggle('active');
         /* find all active products */
@@ -106,6 +105,7 @@
         }
       /* END: click event listener to trigger */
       });
+    }
     }
   }
   const app = {
