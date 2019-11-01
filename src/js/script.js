@@ -145,29 +145,21 @@
     initOrderForm() {
       const thisProduct = this;
 
-      thisProduct.form.addEventListener('submit',function(event){
+      thisProduct.form.addEventListener('submit', function(event) {
         event.preventDefault();
         thisProduct.processOrder();
       });
       for (let input of thisProduct.formInputs){
-        input.addEventListener('change',function(){
+        input.addEventListener('change', function() {
           thisProduct.processOrder();
         });
       }
-      thisProduct.cartButton.addEventListener('click',function(event){
+      thisProduct.cartButton.addEventListener('click', function(event) {
         event.preventDefault();
         thisProduct.processOrder();
         thisProduct.addToCart();
       });
 
-    }
-    initAmountWidget() {
-      const thisProduct = this;
-
-      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-      thisProduct.amountWidgetElem.addEventListener('updated', function() {
-        thisProduct.processOrder();
-      });
     }
     processOrder() {
       const thisProduct = this;
@@ -211,8 +203,17 @@
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       thisProduct.priceElem.innerHTML = price;
     }
+    initAmountWidget() {
+      const thisProduct = this;
+
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function() {
+        thisProduct.processOrder();
+      });
+    }
     addToCart() {
       const thisProduct = this;
+      console.log('addition to cart',thisProduct);
 
       app.cart.add(thisProduct);
     }
@@ -296,7 +297,7 @@
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
     }
-    add(menuProduct){
+    add(menuProduct) {
       // const thisCart = this;
 
       console.log('adding product', menuProduct);
@@ -315,8 +316,9 @@
       const thisApp = this;
 
       const cartElem = document.querySelector(select.containerOf.cart);
-      thisApp.cart - new Cart(cartElem);
+      thisApp.cart = new Cart(cartElem);
     },
+
     initData: function() {
       const thisApp = this;
 
