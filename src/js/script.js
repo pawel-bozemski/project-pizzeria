@@ -1,3 +1,5 @@
+import { CLIENT_RENEG_LIMIT } from "tls";
+
 /* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
 
 {
@@ -293,7 +295,7 @@
       thisCart.getElements(element);
       thisCart.initActions();
       thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
-      console.log('new Cart', thisCart);
+
     }
     getElements(element){
       const thisCart = this;
