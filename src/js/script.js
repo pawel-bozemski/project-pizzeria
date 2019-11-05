@@ -190,9 +190,7 @@
             /* END ELSE IF: if option is not selected and option is default */
           }
           const imageWrappers = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
-          if (optionSelected && imageWrappers){
-            imageWrappers.classList.add(classNames.menuProduct.imageVisible);
-
+          if (optionSelected) {
             if (!thisProduct.params[paramId]) {
               thisProduct.params[paramId] = {
                 label: param.label,
@@ -200,10 +198,12 @@
               };
             }
             thisProduct.params[paramId].options[optionId] = option.label;
-          } else if (imageWrappers) {
-            imageWrappers.classList.remove(classNames.menuProduct.imageVisible);
           }
-        /* END LOOP: for each optionId in param.options */
+
+          if (imageWrappers) {
+            const action = optionSelected ? 'add' : 'remove';
+            imageWrappers.classList[action](classNames.menuProduct.imageVisible);
+          }        /* END LOOP: for each optionId in param.options */
         }
       /* END LOOP: for each paramId in thisProduct.data.params */
       }
@@ -293,6 +293,7 @@
       thisCart.getElements(element);
       thisCart.initActions();
       thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
+      console.log('new Cart', thisCart);
     }
     getElements(element){
       const thisCart = this;
@@ -303,7 +304,6 @@
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
       thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
       thisCart.renderTotalsKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
-
       for(let key of thisCart.renderTotalsKeys){
         thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
       }
@@ -330,7 +330,6 @@
       thisCart.dom.productList.appendChild(generatedDOM);
 
       thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
-
       thisCart.update();
     }
     update() {
