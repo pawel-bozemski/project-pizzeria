@@ -202,7 +202,7 @@ class Booking {
       people: thisBooking.dom.people.value,
       duration: thisBooking.dom.hour,
       starters: [],
-      table: thisBooking.tableId,
+      // table: ,
     };
     console.log('booked', booked);
 
