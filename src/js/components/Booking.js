@@ -152,7 +152,6 @@ class Booking {
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
 
-    thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.form);
     thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
     thisBooking.dom.adress = thisBooking.dom.wrapper.querySelector(select.booking.address);
     thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
@@ -190,7 +189,7 @@ class Booking {
     thisBooking.dom.formSubmit.addEventListener('click', function(){
       event.preventDefault();
       thisBooking.sendBooked();
-    })
+    });
   }
   sendBooked() {
     const thisBooking = this;
