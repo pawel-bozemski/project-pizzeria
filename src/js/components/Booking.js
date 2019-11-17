@@ -137,7 +137,6 @@ class Booking {
       }
     }
   }
-
   render(element) {
     const thisBooking = this;
 
@@ -158,8 +157,6 @@ class Booking {
     thisBooking.dom.hours = thisBooking.dom.wrapper.querySelector(select.booking.hours);
     thisBooking.dom.people = thisBooking.dom.wrapper.querySelector(select.booking.people);
     thisBooking.dom.formSubmit = thisBooking.dom.wrapper.querySelector(select.booking.formSubmit);
-
-
   }
   initWidgets(){
     const thisBooking = this;
@@ -184,6 +181,7 @@ class Booking {
         } else {
           table.classList.toggle('booked');
         }
+        console.log('which table', table);
       });
     }
     thisBooking.dom.formSubmit.addEventListener('click', function(){
@@ -197,12 +195,16 @@ class Booking {
     const url = settings.db.url + '/' + settings.db.booking;
 
     const booked = {
+      datePicked: thisBooking.datePicker.value,
+      hourPicked: thisBooking.hourPicker.value,
       address: thisBooking.dom.adress.value,
       phone: thisBooking.dom.phone.value,
       people: thisBooking.dom.people.value,
       duration: thisBooking.dom.hour,
       starters: [],
+      table: thisBooking.tableId,
     };
+    console.log('booked', booked);
 
     for(let starter of thisBooking.dom.starters) {
       if(starter.checked == true) {
