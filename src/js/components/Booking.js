@@ -179,9 +179,10 @@ class Booking {
         if(table.classList.contains(classNames.booking.tableBooked)) {
           return;
         } else {
-          table.classList.toggle('booked');
+          table.classList.toggle(classNames.booking.tableBooked);
         }
-        console.log('which table', table);
+        thisBooking.tableId = table.getAttribute(settings.booking.tableIdAttribute);
+        console.log('which table', thisBooking.tableId);
       });
     }
     thisBooking.dom.formSubmit.addEventListener('click', function(){
@@ -202,7 +203,7 @@ class Booking {
       people: thisBooking.dom.people.value,
       duration: thisBooking.dom.hour,
       starters: [],
-      // table: ,
+      table: thisBooking.tableId,
     };
     console.log('booked', booked);
 
