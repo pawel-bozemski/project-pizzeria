@@ -86,8 +86,6 @@ class Booking {
       }
     }
 
-    console.log('thisBooking.booked', thisBooking.booked);
-
     thisBooking.updateDOM();
   }
   makeBooked(date, hour, duration, table){
@@ -191,13 +189,11 @@ class Booking {
     }
     thisBooking.dom.formSubmit.addEventListener('click', function(){
       event.preventDefault();
-      console.log('submit booking');
       thisBooking.sendBooked();
     })
   }
   sendBooked() {
     const thisBooking = this;
-    console.log ('sent');
 
     const url = settings.db.url + '/' + settings.db.booking;
 
