@@ -153,6 +153,16 @@ class Booking {
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+
+    thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.form);
+    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
+    thisBooking.dom.adress = thisBooking.dom.wrapper.querySelector(select.booking.address);
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
+    thisBooking.dom.hours = thisBooking.dom.wrapper.querySelector(select.booking.hours);
+    thisBooking.dom.people = thisBooking.dom.wrapper.querySelector(select.booking.people);
+    thisBooking.dom.formSubmit = thisBooking.dom.wrapper.querySelector(select.booking.formSubmit);
+
+
   }
   initWidgets(){
     const thisBooking = this;
@@ -161,6 +171,7 @@ class Booking {
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
+
 
     thisBooking.dom.wrapper.addEventListener('updated', function() {
       thisBooking.updateDOM();
@@ -178,6 +189,46 @@ class Booking {
         }
       });
     }
+    thisBooking.dom.formSubmit.addEventListener('click', function(){
+      event.preventDefault();
+      console.log('submit booking');
+      thisBooking.sendBooked();
+    })
   }
+  sendBooked() {
+    const thisBooking = this;
+    console.log ('sent');
+
+    const url = settings.db.url + '/' + settings.db.booking;
+
+    const booked = {
+      address: thisBooking.dom.adress.value,
+      phone: thisBooking.dom.phone.value,
+      people: thisBooking.dom.people.value,
+      duration: thisBooking.dom.hour,
+      starters: [],
+    };
+
+    for(let starter of thisBooking.dom.starters) {
+      if(starter.checked == true) {
+        booked.starters.push(starter.value);
+      }
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(booked),
+    };
+    fetch(url, options)
+      .then(function(response) {
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
+  }
+
 }
 export default Booking;
