@@ -40,7 +40,7 @@ const app = {
       });
     }
   },
-  activatePage: function(pageId){
+  activatePage: function(pageId) {
     const thisApp = this;
 
     /* add class "active" to matching pages, remove from non-mathing*/
