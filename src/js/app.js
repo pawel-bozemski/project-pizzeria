@@ -102,6 +102,79 @@ const app = {
     thisApp.booking = new Booking(bookingReservation);
 
   },
+  initCarousel(){
+
+    const review = [];
+    review[0] = {
+      title: 'title 1',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      author: 'superman'
+    };
+    review[1] ={
+      title: 'title 2',
+      text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      author: 'batman'
+    };
+    review[2] ={
+      title: 'title 3',
+      text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ',
+      author: 'joker'
+    };
+    let i = 0;
+    const indicators = document.querySelectorAll('.carousel-indicators i');
+
+    function changeReview() {
+      const title = document.querySelector('.review-title');
+      const text = document.querySelector('.review-text');
+      const author = document.querySelector('.review-author');
+      title.innerHTML = review[i].title;
+      text.innerHTML = review[i].text;
+      author.innerHTML = review[i].author;
+
+      for(let indicator of indicators) {
+        indicator.classList.toggle('active');
+      }
+      if(i < review.length - 1) {
+        i++;
+      } else {
+        i=0;
+      }
+    }
+    let j = 0;
+    const carouselImages = [];
+
+    carouselImages[0] = '../../images/main_page/pizza-3.jpg';
+    carouselImages[1] = '../../images/main_page/pizza-4.jpg';
+    carouselImages[2] = '../../images/main_page/pizza-5.jpg';
+
+    function changeImages() {
+      const img = document.querySelector('.carousel-img img');
+      img.src = carouselImages[j];
+
+      if(j < carouselImages.length - 1) {
+        j++;
+      } else {
+        j=0;
+      }
+    }
+
+    // let o = 0;
+
+    // function toggleIndicators() {
+    //   const indicators = document.querySelectorAll('.carousel-indicators i')
+
+    //   if(o = 0)
+
+    // };
+
+    window.onload = function() {
+      setInterval(() => {
+        changeImages();
+        changeReview();
+      }, 3000);
+    };
+
+  },
   init: function(){
 
     const thisApp = this;
@@ -110,6 +183,7 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initCarousel();
   },
 };
 

@@ -1,4 +1,4 @@
-
+// global
 
 .home-wrapper {
   padding: ($base-size * 6) ($base-size * 4);
@@ -7,6 +7,9 @@
   border-radius: $radius;
   margin-top: 60px;
 }
+
+// nav
+
 .home-page {
   text-align: center;
   display: flex;
@@ -22,7 +25,7 @@
   width: 150px;
   border-radius: $radius;
   font-weight: $font-bold;
-  font: $font-text;
+  font-family: $font-text;
   font-size: 20px;
   color: $color-light;
   a {
@@ -75,5 +78,47 @@ background-image: url('../../images/main_page/pizza-2.jpg');
   }
   p {
     font-weight: $font-light;
+  }
+}
+
+// Carousel
+
+.home-carousel {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 60px;
+  text-align: center;
+}
+.carousel-img {
+  flex-basis: 30%;
+  border-radius: $radius;
+  transition: opacity .2s ease-out;
+  img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    transition: opacity .2s ease-out;
+    }
+}
+.carousel-review {
+flex-basis: 60%;
+text-align: left;
+font-family: $font-text;
+transition: opacity .2s ease-out;
+}
+.carousel-indicators {
+  margin-top: 35px;
+  flex-basis: 100%;
+  text-align: center;
+  i {
+    margin-left: 15px;
+    font-size: 10px;
+    transition: 1s;
+    color: #BDC3C7;
+  }
+  .active {
+    color: $color-dark;
   }
 }
