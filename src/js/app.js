@@ -129,7 +129,7 @@ const app = {
     let i = 0;
     const indicators = document.querySelectorAll('.carousel-indicators i');
 
-    function changeReview() {
+    function slider() {
       const title = document.querySelector('.review-title');
       const text = document.querySelector('.review-text');
       const author = document.querySelector('.review-author');
@@ -150,13 +150,11 @@ const app = {
         i=0;
       }
     }
-    changeReview();
+    slider();
 
     setInterval(() => {
-      changeReview();
+      slider();
     }, 3000);
-
-
 
   },
 
