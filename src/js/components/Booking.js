@@ -177,7 +177,7 @@ class Booking {
     for (let table of thisBooking.dom.tables) {
       table.addEventListener('click', function() {
         if(table.classList.contains(classNames.booking.tableBooked)) {
-          return;
+          alert('This table is booked, please choose another :)');
         } else {
           table.classList.toggle(classNames.booking.tableBooked);
         }
