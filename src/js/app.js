@@ -140,10 +140,15 @@ const app = {
       const img = document.querySelector('.carousel-img img');
       img.src = carouselImages[i];
 
-
-      for(let indicator of indicators) {
-        indicator.classList.toggle('active');
+      for (let indicator of indicators) {
+        console.log('indicator', indicator.id);
+        if (indicator.id == i + 1 ) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
       }
+
       if(i < review.length - 1 && i < carouselImages.length) {
         i++;
       } else {
