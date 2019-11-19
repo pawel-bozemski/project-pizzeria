@@ -72,7 +72,7 @@ export const select = {
     people: '[name="people"]',
   },
   nav: {
-    links: '.main-nav a',
+    links: '.main-nav a, .home-buttons a',
   },
 };
 
