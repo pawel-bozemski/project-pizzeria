@@ -30,6 +30,7 @@
   font-size: 20px;
   color: $color-light;
   cursor: pointer;
+
   a {
     text-decoration: none;
     font-size: 25px;
@@ -163,7 +164,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    }
+  }
 
   .gallery-icon {
     color: $color-light;
@@ -204,5 +205,3 @@
 .home-footer a {
   color: $color-main;
 }
-
-

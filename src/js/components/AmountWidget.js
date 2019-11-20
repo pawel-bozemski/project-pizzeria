@@ -35,11 +35,11 @@ class AmountWidget extends BaseWidget {
     });
     thisWidget.dom.linkDecrease.addEventListener('click', function(){
       event.preventDefault();
-      thisWidget.setValue(thisWidget.correctValue - 1);
+      thisWidget.setValue(thisWidget.value - 1);
     });
     thisWidget.dom.linkIncrease.addEventListener('click', function(){
       event.preventDefault();
-      thisWidget.setValue(thisWidget.correctValue + 1);
+      thisWidget.setValue(thisWidget.value + 1);
     });
   }
 }
